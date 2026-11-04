@@ -1,0 +1,10 @@
+.local
+.venv/
+__pycache__/
+build/
+*.egg-info/
+*.wav
+*.sh
+*.ini
+agent_context.md
+

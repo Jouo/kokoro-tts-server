@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kokoro-server"
+version = "0.1.0"
+description = "Persistent local Kokoro text-to-speech REST API"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.115,<1",
+    "python-multipart>=0.0.9,<1",
+    "platformdirs>=4,<5",
+    "uvicorn>=0.30,<1",
+    "kokoro>=0.9.4,<0.10",
+    "misaki[ja,zh]>=0.9.4",
+    "numpy>=1.26",
+    "soundfile>=0.12",
+    "torch>=2.6",
+]
+
+[project.optional-dependencies]
+test = ["httpx>=0.27,<1", "pytest>=8,<10"]
+
+[project.scripts]
+kokoro-server = "kokoro_server.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["kokoro_server*"]
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
